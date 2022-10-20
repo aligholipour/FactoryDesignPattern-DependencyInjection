@@ -23,6 +23,11 @@ order.OrderItems.Add(new OrderItem { Id = 1, Name = "Laptop", Price = 100M, Coun
 order.OrderItems.Add(new OrderItem { Id = 2, Name = "Mobile", Price = 60M, Count = 2, OrderId = 1 });
 
 var weekend = new ShoppingCart(order, new WeekendDiscountFactory(order.OrderRegistrationDate));
-var BuildShoppingCart = weekend.BuildShoppingCart();
+var BuildShoppingCart1 = weekend.BuildShoppingCart();
 
-Console.WriteLine(BuildShoppingCart);
+var buyingMoreThanThreeProducts = new ShoppingCart(order, new BuyMoreThanThreeProductFactory(order.Total));
+var BuildShoppingCart2 = buyingMoreThanThreeProducts.BuildShoppingCart();
+
+Console.WriteLine(BuildShoppingCart1);
+Console.WriteLine(BuildShoppingCart2);
+
